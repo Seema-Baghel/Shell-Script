@@ -3,18 +3,19 @@
 echo "********** Welcome to Employee Wage Computation ***********"
 
 Emp_Wage_PerHr=20
-isFullTime=1
-isPartTime=2
-randomCheck=$((RANDOM%3));
-if [ $isFullTime -eq $randomCheck ];
-then
-        empHr=8;
-elif [ $isPartTime -eq $randomCheck ];
-then
+isFullTime=2
+isPartTime=1
+empCheck=$((RANDOM%3));
+case $empCheck in
+        $isHalfTime)
         empHr=4;
-else
-	empHr=0;
-fi
+;;
+        $isFullTime)
+        empHr=8;
+;;
+        *)
+        empHr=0;
+esac
 salary=$(( $Emp_Wage_PerHr * $empHr ));
 echo $salary;
 
