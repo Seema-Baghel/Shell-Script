@@ -2,16 +2,17 @@
 
 echo "********** Welcome to Employee Wage Computation ***********"
 
-isPresent=0
+Emp_Wage_PerHr=20
+isFullTime=1
 randomCheck=$((RANDOM%2));
-if [ $randomCheck -eq 1 ];
+if [ $isFullTime -eq $randomCheck ];
 then
-        isPresent="Present";
+        empHr=8;
 else
-        isPresent="Absent";
+        empHr=0;
 fi
-echo $isPresent;
-
+salary=$(( $Emp_Wage_PerHr * $empHr ));
+echo $salary;
 
 
 
