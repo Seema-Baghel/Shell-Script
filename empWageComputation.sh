@@ -10,6 +10,7 @@ num_Working_Days=20;
 num_Working_Hrs=0;
 Total_Working_Hrs=50;
 Working_days=1;
+declare -A dailyWage
 function getWorkHr(){
 
 	case $empCheck in
@@ -38,9 +39,9 @@ do
         numWorkingHrs=$(($numWorkingHrs+$empHr));
         ((Working_days++))
         salary=$(($emp_Rate_PerHr*$empHr));
-        dailyWage[$Working_days]="$( getEmpwage $empHr )"
+        dailyWage["day $Working_days"]="$( getEmpwage $empHr )"
 done
 total_salary=$(($total_salary+$salary));
 echo ${dailyWage[@]}
-
+echo ${!dailyWage[@]}
 
